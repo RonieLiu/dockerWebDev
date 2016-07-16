@@ -1,0 +1,33 @@
+nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    links:
+      - "php"
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ./etc/ngConf.d:/etc/nginx/conf.d
+
+php:
+    build: ./Dockerfiles/php
+    ports:
+      - "9000:9000"
+    links:
+      - "mysql"
+      - "redis"
+    volumes:
+      - ./html:/usr/share/nginx/html
+
+mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysqlData:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+
+redis:
+    image: redis
+    ports:
+      - "6379:6379"
