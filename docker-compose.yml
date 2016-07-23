@@ -23,6 +23,8 @@ php:
       - "redis"
     volumes_from:
       - "common_data"
+    volumes:
+      - ./etc/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
 
 mysql:
     image: mysql
