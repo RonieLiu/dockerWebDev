@@ -1,11 +1,17 @@
+common_data:
+  image: "ubuntu"
+  volumes:
+      - ./html:/usr/share/nginx/html
+
 nginx:
     image: nginx
     ports:
       - "80:80"
     links:
       - "php"
+    volumes_from:
+      - "common_data"
     volumes:
-      - ./html:/usr/share/nginx/html
       - ./etc/ngConf.d:/etc/nginx/conf.d
 
 php:
@@ -15,8 +21,8 @@ php:
     links:
       - "mysql"
       - "redis"
-    volumes:
-      - ./html:/usr/share/nginx/html
+    volumes_from:
+      - "common_data"
 
 mysql:
     image: mysql
