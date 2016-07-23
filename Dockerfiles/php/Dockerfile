@@ -8,7 +8,7 @@ RUN apt-get update \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql \
     && pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
-    && pecl install xdebug && echo "extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini \
+    && pecl install xdebug && echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     
