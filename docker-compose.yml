@@ -16,8 +16,6 @@ nginx:
 
 php:
     build: ./Dockerfiles/php
-    ports:
-      - "9000:9000"
     links:
       - "mysql"
       - "redis"
