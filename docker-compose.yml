@@ -2,6 +2,7 @@ common_data:
   image: "ubuntu"
   volumes:
       - ./project:/project/
+      - ./dockerDisk:/ronieDisk
 
 nginx:
     image: nginx
