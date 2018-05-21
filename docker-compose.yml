@@ -2,39 +2,30 @@ common_data:
   image: "ubuntu"
   volumes:
       - ./project:/project/
+      - ~/dadaabc/code/:/projects/
       - ./dockerDisk:/ronieDisk
+      - ./dockerDisk/var/www/logs:/var/www/logs
 
 nginx:
     image: nginx
     ports:
       - "80:80"
-    links:
-      - "php"
+      - "443:443"
     volumes_from:
       - "common_data"
     volumes:
       - ./etc/ngConf.d:/etc/nginx/conf.d
+    links:
+      - "php"
 
 php:
     build: ./Dockerfiles/php
-    links:
-      - "mysql"
-      - "redis"
     volumes_from:
       - "common_data"
     volumes:
       - ./etc/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
-
-mysql:
-    image: mysql
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./mysqlData:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-
-redis:
-    image: redis
-    ports:
-      - "6379:6379"
+      DADA_ENV: "dev"
+      DADA_DEV: "dev"
+    extra_hosts:
+      - "dev-service.dadaabc.us:192.168.146.44"
