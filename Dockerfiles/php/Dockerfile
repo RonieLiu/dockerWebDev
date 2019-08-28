@@ -1,7 +1,7 @@
-FROM php:7-fpm
+FROM php:7.1-fpm
 
 RUN apt-get update \
-	&& apt-get install -y libpng12-dev zlib1g-dev curl libcurl4-gnutls-dev \
+	&& apt-get install -y libpng-dev zlib1g-dev curl libcurl4-gnutls-dev \
 	&& docker-php-ext-install gd \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql \
