@@ -1,3 +1,6 @@
 /mysqlData
 /project
 .idea
+.env
+example-data
+volumes
