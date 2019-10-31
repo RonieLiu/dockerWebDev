@@ -31,3 +31,8 @@ services:
 
   redis:
       image: redis
+
+networks:
+  default:
+    external:
+      name: ${NETWORK_NAME}
