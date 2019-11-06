@@ -21,7 +21,7 @@ services:
         - ${DEFAUL_PROJECT}:/default_project/
         - ${PROJECTS}:/projects/
       environment:
-        APP_ENV: "development"
+        APP_ENV: ${APP_ENV}
 
   mysql:
       image: mysql:5.7.22
