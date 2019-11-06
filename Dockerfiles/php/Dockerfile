@@ -3,6 +3,7 @@ FROM php:7.1-fpm
 RUN apt-get update \
 	&& apt-get install -y libpng-dev zlib1g-dev curl libcurl4-gnutls-dev \
 	&& apt install -y git \
+	&& apt install -y zip \
 	&& php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 	&& php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
 	&& docker-php-ext-install gd \

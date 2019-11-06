@@ -7,6 +7,7 @@ services:
         - "443:443"
       volumes:
         - ./etc/ngConf.d:/etc/nginx/conf.d
+        - ./etc/nginx/php.conf:/etc/nginx/php.conf
         - ${DEFAUL_PROJECT}:/default_project/
         - ${PROJECTS}:/projects/
         - ./volumes/logs/nginx:/ronie/logs/nginx
