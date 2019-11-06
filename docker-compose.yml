@@ -26,6 +26,7 @@ services:
   mysql:
       image: mysql:5.7.22
       volumes:
+        - ./etc/mysql/charset.cnf:/etc/mysql/conf.d/charset.cnf
         - ./mysqlData:/var/lib/mysql
       environment:
         MYSQL_ROOT_PASSWORD: 123456
