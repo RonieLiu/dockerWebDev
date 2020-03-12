@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.2-fpm
 
 RUN apt-get update \
 	&& apt-get install -y libpng-dev zlib1g-dev curl libcurl4-gnutls-dev \
@@ -10,7 +10,7 @@ RUN apt-get update \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql \
     && pecl install redis && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
-    && pecl install xdebug \ 
-    && pecl install yar && echo "extension=yar.so" > /usr/local/etc/php/conf.d/yar.ini
+    && pecl install xdebug \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer
 
 
